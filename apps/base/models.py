@@ -50,16 +50,16 @@ class FriendLink(models.Model):
         return self.name
 
 
-class NavigationBar(models.Model):
-    name = models.CharField(max_length=20, verbose_name='名称')
-    parents = models.ForeignKey('self',null=True, blank=True, verbose_name='父级导航',help_text='空表示为一级导航,选择会成为其下的导航')
-    index = models.IntegerField(verbose_name='顺序',help_text='排列的顺序,0在最左端依次向右排列')
-    add_time = models.DateTimeField(auto_now_add=True, verbose_name='添加时间')
-
-    class Meta:
-        ordering = ['index']
-        verbose_name = '导航栏设置'
-        verbose_name_plural = verbose_name
-
-    def __str__(self):
-        return self.name
+# class NavigationBar(models.Model):
+#     name = models.CharField(max_length=20, verbose_name='名称')
+#     parents = models.ForeignKey('self',null=True, blank=True, verbose_name='父级导航',help_text='空表示为一级导航,选择会成为其下的导航')
+#     index = models.IntegerField(verbose_name='顺序',help_text='排列的顺序,0在最左端依次向右排列')
+#     add_time = models.DateTimeField(auto_now_add=True, verbose_name='添加时间')
+#
+#     class Meta:
+#         ordering = ['index']
+#         verbose_name = '导航栏设置'
+#         verbose_name_plural = verbose_name
+#
+#     def __str__(self):
+#         return self.name

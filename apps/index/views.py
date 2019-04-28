@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from base.models import SiteInfo,NavigationBar
+from base.models import SiteInfo
 # Create your views here.
 
 def index(request):

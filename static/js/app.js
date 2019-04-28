@@ -1,11 +1,11 @@
-// /*
-//  * Original Theme Application JS
-//  * Silper application js
-//  * @original author Louie
-//  * @url http://i94.me
-//  * @update Ninew
-//  * @date 2019.03
-//  */
+/*
+ * Original Theme Application JS
+ * Silper application js
+ * @original author Louie
+ * @url http://i94.me
+ * @update Loren
+ * @date 2019.04
+ */
 
 
 

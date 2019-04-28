@@ -11,3 +11,8 @@ from django.shortcuts import render
 
 def friends_view(request):
     return render(request,'blog/links.html')
+
+
+def archive_view(request):
+    return render(request,'blog/archive.html')
+
