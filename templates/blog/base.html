@@ -61,8 +61,8 @@
                                     </ul>
                                 </li>
                                 <li><a href="{% url 'base:archive' %}">归档</a></li>
-                                <li><a href="{% url 'base:friends' %}">友链</a></li>
-                                <li><a href="#">留言板</a></li>
+{#                                <li><a href="{% url 'base:friends' %}">友链</a></li>#}
+{#                                <li><a href="#">留言板</a></li>#}
                             </ul>
                         </nav>
                     </div>
@@ -209,7 +209,7 @@
                     console.error(err);
                 });
         }
-        var isID = 0;
+        var isID = {{ hitokoto_status }};
         if (!isID) {
             window.setTimeout(Hitokoto, 10000);
         }

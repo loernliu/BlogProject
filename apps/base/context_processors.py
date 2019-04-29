@@ -14,6 +14,7 @@ def site_info(request):
         'favicon': site_info.favicon,
         'avatar':site_info.avatar,
         'logo': site_info.logo,
+        'hitokoto_status':int(site_info.hitokoto_status),
         'f_logo': site_info.f_logo,
         'site_copyright': site_info.site_copyright,
         'icp': site_info.icp,

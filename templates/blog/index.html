@@ -16,34 +16,22 @@
                     </div>
                     <!-- 社交图片 -->
                     <div class="top-social">
-                        <li class="wechat"><a href="#"><img src="{% static 'images/social/wechat.png' %} "></a>
-                            <div class="wechatInner">
-                                <img src="{% static 'images/skillcat921.jpg' %}" alt="微信公众号">
-                            </div>
+                        <li class="wechat">
+                            <a href="#"><img src="{% static 'images/social/wechat.png' %} "></a>
+                            <div class="wechatInner"><img src="{% static 'images/skillcat921.jpg' %}" alt="微信公众号"></div>
                         </li>
-                        <li><a href="#" target="_blank" class="social-sina" title="sina">
-                            <img src="{% static 'images/social/sina.png' %}"></a></li>
-                        <li><a href="#" target="_blank" class="social-zhihu" title="zhihu">
-                            <img src="{% static 'images/social/zhihu.png' %}"></a></li>
-                        <li><a href="#" target="_blank" class="social-github" title="github">
-                            <img src="{% static 'images/social/github.png' %}"></a></li>
-                        <li><a href="#" target="_blank" class="social-bili" title="bilibili">
-                            <img src="{% static 'images/social/bilibili.png' %}"></a></li>
-                        <li><a href="#" target="_blank" class="social-wangyiyun" title="CloudMusic">
-                            <img src="{% static 'images/social/wangyiyun.png' %}"></a>
+                        <li>
+                            <a href="#" target="_blank" title="sina">
+                            <img src="{% static 'images/social/sina.png' %}"></a>
                         </li>
-                        <li><a href="#" target="_blank" class="social-wangyiyun" title="Twitter">
-                            <img src="{% static 'images/social/twitter.png' %}"></a></li>
+                        <li>
+                            <a href="#" target="_blank" title="zhihu">
+                            <img src="{% static 'images/social/zhihu.png' %}"></a>
+                        </li>
                     </div>
                 </div>
             </figure>
-            <!-- 视频 -->
-            <div id="video-container" style="display:none;">
-                <video id="bgvideo" class="video" src="" width="auto" preload="auto" style="min-height: 927px;"></video>
-                <div id="video-btn" class="loadvideo videolive"></div>
-                <div id="video-add"></div>
-                <div class="video-stu"></div>
-            </div>
+
             <canvas id="bubble-canvas" class="bubble" width="1920" height="927" style="display: inline-block;"></canvas>
         </div>
 {% endblock %}

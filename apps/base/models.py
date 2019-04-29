@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
@@ -6,10 +8,11 @@ class SiteInfo(models.Model):
     site_name = models.CharField(max_length=20, verbose_name='网站名称')
     site_description = models.CharField(max_length=200, verbose_name='网站简介')
     keywords = models.CharField(max_length=300, verbose_name='关键字')
-    favicon = models.ImageField(upload_to='base/image/%Y/%m', null=True, blank=True, verbose_name='icon',help_text='网站的favicon')
-    avatar = models.ImageField(upload_to='base/image/%Y/%m', null=True, blank=True, verbose_name='头像',help_text='主页中间和内容页底部显示的头像')
-    logo = models.ImageField(upload_to='base/image/%Y/%m', null=True, blank=True, verbose_name='顶部logo',help_text='导航栏最左侧跳动的logo')
-    f_logo = models.ImageField(upload_to='base/image/%Y/%m', null=True, blank=True, verbose_name='底部logo',help_text='网站底部旋转logo')
+    hitokoto_status = models.BooleanField(default=True,verbose_name='是否启用自动获取一言,默认打开')
+    favicon = models.ImageField(upload_to='image/private/', null=True, blank=True, verbose_name='icon',help_text='网站的favicon')
+    avatar = models.ImageField(upload_to='image/private/', null=True, blank=True, verbose_name='头像',help_text='主页中间和内容页底部显示的头像')
+    logo = models.ImageField(upload_to='image/private/', null=True, blank=True, verbose_name='顶部logo',help_text='导航栏最左侧跳动的logo')
+    f_logo = models.ImageField(upload_to='image/private/', null=True, blank=True, verbose_name='底部logo',help_text='网站底部旋转logo')
     site_copyright = models.CharField(max_length=50, verbose_name='版权',help_text='可以使用a标签的形式添加需要跳转的链接')
     icp = models.CharField(max_length=20, null=True, blank=True, verbose_name='备案号')
     analytics_code = models.TextField(max_length=1000, null=True, blank=True, verbose_name='网站统计代码')
@@ -21,6 +24,10 @@ class SiteInfo(models.Model):
 
     def __str__(self):
         return self.site_name
+
+    def clean(self):
+        if SiteInfo.objects.exclude(pk=self.pk).count():
+            raise ValidationError(_('只能有一个配置'))
 
 
 class FriendCategory(models.Model):
@@ -48,6 +55,7 @@ class FriendLink(models.Model):
 
     def __str__(self):
         return self.name
+
 
 
 # class NavigationBar(models.Model):
