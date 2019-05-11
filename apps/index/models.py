@@ -44,8 +44,8 @@ class FeatureInfo(models.Model):
         return self.feature_title
 
     def clean(self):
-        if FeatureInfo.objects.exclude(pk=self.pk).count():
-            raise ValidationError(_('只能有一个配置'))
+        if FeatureInfo.objects.exclude(pk=self.pk).count() > 2:
+            raise ValidationError(_('只能有三个配置'))
 
 
 class OtherInfo(models.Model):
