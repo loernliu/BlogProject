@@ -43,7 +43,7 @@
                         </a>
                         <div class="header-user-menu">
                             <div class="herder-user-name no-logged">是否要立即登录？<br>
-                                <a href="#">立即登录？</a>
+                                <a href="#">立即登录？</a>{
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                                         <li><a href="#">说说</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{% url 'base:archive' %}">归档</a></li>
+{#                                <li><a href="{% url 'base:archive' %}">归档</a></li>#}
 {#                                <li><a href="{% url 'base:friends' %}">友链</a></li>#}
 {#                                <li><a href="#">留言板</a></li>#}
                             </ul>
@@ -127,14 +127,14 @@
             </div>
             <!-- logo -->
             <div class="site-branding">
-                <div class="site-title"><a href="#"><img src="/media/{{ logo }}"></a></div>
+                <div class="site-title"><a href="#"><img src="{{ logo.url }}"></a></div>
             </div>
         </div>
     </section><!-- #section -->
     <!-- 移动端菜单 -->
     <div id="mo-nav">
         <div class="m-avatar">
-            <img src="/media/{{ avatar }}">
+            <img src="{{ avatar.url }}">
         </div>
         <div class="m-search">
             <form class="m-search-form" method="get" action="#" role="search">
@@ -210,10 +210,11 @@
                 });
         }
         var isID = {{ hitokoto_status }};
-        if (!isID) {
+        if (isID) {
             window.setTimeout(Hitokoto, 10000);
         }
     </script>
+    <!-- 百度 -->
     <div class="site-statistics">
         <script type="text/javascript">var _hmt = _hmt || [];
             (function () {

@@ -21,8 +21,8 @@ from BlogProject.settings import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'',include('base.urls',namespace='base')),
+    url(r'',include('base.urls',namespace='basee')),
     url(r'',include('index.urls',namespace='index')),
+    url(r'',include('article.urls',namespace='article')),
     url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
-
 ]

@@ -1,5 +1,6 @@
 from .models import SiteInfo
 
+
 def site_info(request):
     site_info = SiteInfo.objects.first()
     if site_info is None:
@@ -12,12 +13,12 @@ def site_info(request):
         'site_description': site_info.site_description,
         'keywords': site_info.keywords,
         'favicon': site_info.favicon,
-        'avatar':site_info.avatar,
+        'avatar': site_info.avatar,
         'logo': site_info.logo,
-        'hitokoto_status':int(site_info.hitokoto_status),
+        'hitokoto_status': int(site_info.hitokoto_status),
         'f_logo': site_info.f_logo,
         'site_copyright': site_info.site_copyright,
         'icp': site_info.icp,
         'analytics_code': site_info.analytics_code,
-        'add_time':site_info.add_time
+        'add_time': site_info.add_time
     }

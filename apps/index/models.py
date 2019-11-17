@@ -53,6 +53,7 @@ class OtherInfo(models.Model):
     hitokoto = models.CharField(max_length=200,verbose_name='一言',help_text='hitokoto一言,默认会使用ajax自动获取,可从基础配置中关闭')
     notice = models.CharField(max_length=300,blank=True,null=True,verbose_name='通知',help_text='通知框中展示的内容')
     wechat_image = models.ImageField(upload_to='image/private/',verbose_name='微信二维码',help_text='微信二维码,社交信息中选择打开微信时才会有效')
+
     class Meta:
         verbose_name = '首页其他信息'
         verbose_name_plural = verbose_name

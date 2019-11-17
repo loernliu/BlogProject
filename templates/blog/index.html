@@ -1,36 +1,39 @@
 {% extends 'blog/base.html' %}
 {% load staticfiles %}
-
 {% load index_tags %}
-
-{% get_other as other %}
-
+{% block title %}首页-{{ site_name }}{% endblock %}
 {% block index_social %}
-     <!-- 背景图部分 -->
+        {% get_other_info as other %}
+        {% social_info as social_list %}
+
+         <!-- 背景图部分 -->
         <div id="large-header" class="headertop large-header filter-undertint" style="height: auto; display: block;">
             <!-- 社交信息 -->
             <figure id="centerbg" class="centerbg"
-                style="background-image: url({{ other.bg_image }}); height: 927px;">
+                style="background-image: url('{{ other.bg_image.url }}'); height: 927px;">
                 <div class="focusinfo">
-                    <div class="header-tou"><a href="#"><img src="/media/{{ avatar }}"></a>
+                    <div class="header-tou"><a href="#"><img src="{{ avatar.url }}"></a>
                     </div>
                     <div id="hitokoto" class="header-info">
-                        <p id="hitokoto_text">真正重要的东西，总是没有的人比拥有的人清楚。 -「银魂」</p>
+                        <p id="hitokoto_text">{{ other.hitokoto }}</p>
                     </div>
                     <!-- 社交图片 -->
                     <div class="top-social">
-                        <li class="wechat">
-                            <a href="#"><img src="{% static 'images/social/wechat.png' %} "></a>
-                            <div class="wechatInner"><img src="{% static 'images/skillcat921.jpg' %}" alt="微信公众号"></div>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank" title="sina">
-                            <img src="{% static 'images/social/sina.png' %}"></a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank" title="zhihu">
-                            <img src="{% static 'images/social/zhihu.png' %}"></a>
-                        </li>
+                        {% for social in social_list %}
+                            {% if social.name == 'wechat' %}
+                                <li class="wechat">
+                                    <a href="#"><img src="{% static 'images/social/' %}{{ social.name }}.png"></a>
+                                    <div class="wechatInner">
+                                        <img src="{{ other.wechat_image.url }}" alt="微信二维码">
+                                    </div>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a href="{{ social.url }}" target="_blank" title="{{ social.name }}">
+                                    <img src="{% static 'images/social/' %}{{ social.name }}.png"></a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             </figure>
@@ -39,21 +42,21 @@
         </div>
 {% endblock %}
 
-
 {% block content %}
+            {% get_other_info as other %}
+            {% get_feature as feature_list %}
+
             <div class="blank" style="padding-top: 0px;"></div>
             <div id="content" class="site-content">
                 <!-- 通知框 -->
                 <div class="notice">
                     <i class="iconfont"></i>
                     <!--加入类光标动画文字-->
-                    <div class="notice-content"><span class="notice-cursor">{{ other.notice }}</span> </div>
+                    <div class="notice-content">{{ other.notice }}<span class="notice-cursor">~~~</span> </div>
                 </div>
                 <!-- 中间三个框 -->
                 <div class="top-feature">
                     <h1 class="fes-title">Focus</h1>
-                    {% get_feature as feature_list %}
-
                     <div class="feature-content">
                     {% for feature in feature_list %}
                         <li class="feature-{{ feature.pk }}">
@@ -69,6 +72,7 @@
                 <div id="primary" class="content-area">
                     <main id="main" class="site-main" role="main">
                         <h1 class="main-title">Posts</h1>
+
                         <article class="post post-list-thumb " itemscope="" itemtype="contentUrl">
                             <div class="post-thumb">
                                 <a href="http://blog.skillcat.me/wordpress/271.html"
@@ -123,6 +127,7 @@
                                     </a>
                                     <div class="post-meta">
                                         <span><i class="iconfont"></i>196 热度</span>
+
                                         <span class="comments-number">
                                             <i class="iconfont"></i>
                                             <a href="http://blog.skillcat.me/css/531.html#comments">3 条评论</a>
@@ -145,11 +150,10 @@
                         </article>
                     </main>
                     <!-- 翻页按钮 -->
-                    <div id="pagination"><a href="">上一个</a></div>
+                    <div id="pagination"><a href="">下一个</a></div>
                 </div>
             </div><!-- #content -->
 {% endblock %}
-
 
 {% block script %}
     <!-- 气泡动画 -->
